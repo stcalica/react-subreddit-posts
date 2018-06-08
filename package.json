@@ -1,6 +1,6 @@
 {
   "name": "react-subreddit-posts",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "React component for displaying subreddit posts in different styles",
   "main": "dist/index.js",
   "repository" : {
@@ -24,10 +24,6 @@
   ],
   "author": "Kyle Calica",
   "license": "ISC",
-  "peerDependencies": {
-   "react": "^16.3.0",
-   "react-dom": "^16.3.0"
-  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
