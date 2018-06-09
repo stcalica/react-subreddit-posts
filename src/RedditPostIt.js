@@ -1,42 +1,40 @@
-import React, { Component } from 'react';
+import React from "react";
 
 /*
-
   Gallery Post
   Title on bottom as caption
   Image shown with gaps between
-
 */
 
-class RedditPostIt extends Component {
+export default function RedditPostIt(props) {
+  const galleryItem = {
+    width: "25%",
+    margin: "10px"
+  };
 
-  render(){
+  const galleryTitle = {
+    fontSize: "1em",
+    textOverflow: "ellipsis"
+  };
 
-    const galleryItem = {
-      width: '25%',
-      margin: '10px'
-    }
+  const anchorStyle = {
+    textDecoration: "none"
+  };
 
-    const galleryTitle = {
-      fontSize: '1em',
-      textOverflow: 'ellipsis'
-    };
+  const galleryPreview = {};
 
-    const anchorStyle = {
-      textDecoration: 'none'
-    };
-
-    const galleryPreview = {};
-
-    return(
-        <li style={galleryItem}>
-          <a style={anchorStyle} href={this.props.link}>
-          <h3 style={galleryTitle}> {this.props.title}</h3>
-          { this.props.media ? <img stlye={galleryPreview} src={this.props.media} alt="Reddit Post" height={this.props.height} width={this.props.width}/> :  <img tlye={galleryPreview} src={this.props.placeholder} alt="Reddit Post"  height={this.props.height} width={this.props.width}/>  }
-          </a>
-        </li>
-    );
-  }
+  return (
+    <li style={galleryItem}>
+      <a style={anchorStyle} href={props.link}>
+        <h3 style={galleryTitle}>{props.title}</h3>
+        <img
+          style={galleryPreview}
+          src={props.media}
+          alt="Reddit Post"
+          height={props.height}
+          width={props.width}
+        />
+      </a>
+    </li>
+  );
 }
-
-export default RedditPostIt;
