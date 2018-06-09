@@ -4,8 +4,8 @@ I wanted to a plug n play React component where I can just specify the subreddit
 I didn't want to also have a bunch of devDependencies on other NPM modules or React Components.
 
 
-##Use
-
+# Use
+```
 <RedditPosts
   subreddit=""
   display="gallery"  //list, gallery, tile
@@ -14,10 +14,10 @@ I didn't want to also have a bunch of devDependencies on other NPM modules or Re
   height="" //of each tile or gallery post
   //listings are always full page
   />
+```
 
-
-##Example
-
+# Example
+```
 <RedditPosts
   subreddit="aww"
   display="tile"  
@@ -25,9 +25,9 @@ I didn't want to also have a bunch of devDependencies on other NPM modules or Re
   width="250px"
   height="250px"
   />
+```
 
-
-#Thoughts, Questions, Updates?
+# Thoughts, Questions, Updates?
 
 If you think there is something I can improve on please let me know!
 Life is a journey, I'd appreciate any feedback along my journey.
