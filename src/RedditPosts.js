@@ -6,60 +6,76 @@ import RedditTile from './RedditTile';
 const redditAPI = 'https://www.reddit.com/r/';
 
 export default class RedditPosts extends Component {
-  constructor(props){
-  super(props);
-  this.state = {
-    redditPosts: []
+  constructor(props) {
+    super(props);
+    this.state = { redditPosts: [] };
+
+    this.componentChose = this.componentChose.bind(this);
+    this.mediaComprehension = this.getMediaFromPost.bind(this);
+    this.handlePosts = this.handlePosts.bind(this);
   }
 
-  this.componentChose = this.componentChose.bind();
-  this.mediaComprehension = this.mediaComprehension.bind();
+  componentDidMount() {
+    const uri = `${redditAPI}${this.props.subreddit}.json`;
 
+    fetch(uri)
+      .then(data => data.json())
+      .then(this.handlePosts)
+      .catch(err => console.error(err));
   }
 
-  //rework later to better produce the media links for previews and other times of links like gifv
-  mediaComprehension(post){
-    let mediaSource = null; //.preview.images[0].source.url;
-    if(post.data.hasOwnProperty('preiew') && (post.data.url.split('.').pop() !== 'gifv') && !(post.data.url.split('.').pop() !== 'gif')){
-        mediaSource = post.data.preview.preview.images[0].source.url;
-    } else if(post.data.url.split('.').pop() === 'gif'){
-      mediaSource = post.data.url;
-    } else if(post.data.url.split('.').pop() === 'gifv'){
-      //turn into imgur video link set up so it display video
-      mediaSource = null;
-    } else if(post.data.url.split('.').pop() === 'jpg' || post.data.url.split('.').pop() === 'jpeg'){
-        mediaSource = post.data.url;
+  render() {
+    const { containerStyle, ListItemComponent } = this.componentChose(
+      this.props.display
+    );
+
+    return (
+      <ul style={containerStyle}>
+        {this.state.redditPosts.map(post => (
+          <ListItemComponent
+            key={post.key}
+            link={post.link}
+            media={post.media}
+            title={post.title}
+            height={this.props.height}
+            width={this.props.width}
+          />
+        ))}
+      </ul>
+    );
+  }
+
+  handlePosts(posts) {
+    const apiPosts = posts.data.children.map((post, index) => {
+      return {
+        key: index,
+        title: post.data.title,
+        media: this.getMediaFromPost(post),
+        link: post.data.url
+      };
+    });
+
+    this.setState({ redditPosts: apiPosts });
+  }
+
+  getMediaFromPost(post) {
+    const extension = post.data.url.split('.').pop();
+    if (post.data.hasOwnProperty('preiew') && extension === 'gif') {
+      return post.data.preview.preview.images[0].source.url;
     }
-    return mediaSource;
+
+    if (extension === 'gif' || extension === 'jpg' || extension === 'jpeg') {
+      return post.data.url;
+    }
+
+    return this.props.placeholder;
   }
 
-  componentDidMount(){
-    let uri = redditAPI + this.props.subreddit + ".json";
-    if(uri){ fetch(uri)
-    .then(data => data.json())
-    .then(posts => {
-      let apiPosts = [];
-      posts.data.children.forEach( (post, index) => {
-
-        let postData = {
-          key: index,
-          title:post.data.title,
-          media: this.mediaComprehension(post),
-          link: post.data.url
-        };
-        apiPosts.push(postData);
-      });
-
-      this.setState({redditPosts : apiPosts});
-    }).catch(err => console.log(err)) }
-  }
-
-  //encapsulate <ul> and classes as each componenet and each componenet as a subclass of  a Component class or interface?
-  componentChose = (display) => {
+  componentChose(display) {
     const flexContainerGallery = {
-      display:'flex',
+      display: 'flex',
       width: '100%',
-      flexDirection:'row',
+      flexDirection: 'row',
       flexWrap: 'wrap',
       justifyContent: 'flex-start',
       listStyle: 'none'
@@ -81,73 +97,30 @@ export default class RedditPosts extends Component {
       justifyContent: 'center'
     };
 
-    switch(display){
+    switch (display) {
       case 'tile':
-        return(
-          <ul style={gridContainerTile}>
-            { this.state.redditPosts.map(post => <RedditTile
-              key={post.key}
-              link={post.link}
-              media={post.media}
-              title={post.title}
-              placeholder={this.props.placeholder}
-              height={this.props.height}
-              width={this.props.width}
-              />)
-            }
-          </ul>
-        );
-        case 'gallery':
-        return(
-          <ul style={flexContainerGallery}>
-            { this.state.redditPosts.map(post => <RedditPostIt
-              key={post.key}
-              link={post.link}
-              media={post.media}
-              title={post.title}
-              placeholder={this.props.placeholder}
-              height={this.props.height}
-              width={this.props.width}
-              />)
-            }
-          </ul>
-        );
-        case 'listing':
-        return(
-          <ul style={flexContainerList}>
-            { this.state.redditPosts.map(post => <RedditListing
-              key={post.key}
-              link={post.link}
-              media={post.media}
-              title={post.title}
-              placeholder={this.props.placeholder}
-              height={this.props.height}
-              width={this.props.width}
-              />)
-            }
-          </ul>
-        );
-        default:
-        return(
-          <ul style={flexContainerList}>
-            { this.state.redditPosts.map(post => <RedditListing
-              key={post.key}
-              link={post.link}
-              media={post.media}
-              title={post.title}
-              placeholder={this.props.placeholder}
-              height={this.props.height}
-              width={this.props.width}
-              />)
-            }
-          </ul>
-        );
+        return {
+          containerStyle: gridContainerTile,
+          ListItemComponent: RedditTile
+        };
+
+      case 'gallery':
+        return {
+          containerStyle: flexContainerGallery,
+          ListItemComponent: RedditPostIt
+        };
+
+      case 'listing':
+        return {
+          containerStyle: flexContainerList,
+          ListItemComponent: RedditListing
+        };
+
+      default:
+        return {
+          containerStyle: flexContainerList,
+          ListItemComponent: RedditListing
+        };
     }
   }
-
-  render() {
-    return(this.componentChose(this.props.display));
-  }
 }
-
-//export default RedditPosts;
