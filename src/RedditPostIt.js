@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 /*
   Gallery Post
@@ -8,17 +8,17 @@ import React from "react";
 
 export default function RedditPostIt(props) {
   const galleryItem = {
-    width: "25%",
-    margin: "10px"
+    width: '25%',
+    margin: '10px'
   };
 
   const galleryTitle = {
-    fontSize: "1em",
-    textOverflow: "ellipsis"
+    fontSize: '1em',
+    textOverflow: 'ellipsis'
   };
 
   const anchorStyle = {
-    textDecoration: "none"
+    textDecoration: 'none'
   };
 
   const galleryPreview = {};

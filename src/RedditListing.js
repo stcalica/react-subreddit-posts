@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from 'react';
 
 /*
   Image next to title which is all a link
@@ -6,24 +6,24 @@ import React, { Component } from "react";
 */
 export default function RedditListing(props) {
   const listItem = {
-    display: "flex",
-    flexWrap: "nowrap",
-    flexDirection: "row",
-    width: "100%",
-    listStyle: "none"
+    display: 'flex',
+    flexWrap: 'nowrap',
+    flexDirection: 'row',
+    width: '100%',
+    listStyle: 'none'
   };
 
   const anchorStyle = {
-    display: "flex",
-    textDecoration: "none"
+    display: 'flex',
+    textDecoration: 'none'
   };
 
   const listPreview = {
-    margin: "10px"
+    margin: '10px'
   };
 
   const listTitle = {
-    margin: "10px"
+    margin: '10px'
   };
 
   const titleListItem = {};

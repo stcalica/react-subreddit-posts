@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import RedditPostIt from "./RedditPostIt";
-import RedditListing from "./RedditListing";
-import RedditTile from "./RedditTile";
+import React, { Component } from 'react';
+import RedditPostIt from './RedditPostIt';
+import RedditListing from './RedditListing';
+import RedditTile from './RedditTile';
 
-const redditAPI = "https://www.reddit.com/r/";
+const redditAPI = 'https://www.reddit.com/r/';
 
 export default class RedditPosts extends Component {
   constructor(props) {
@@ -59,12 +59,12 @@ export default class RedditPosts extends Component {
   }
 
   getMediaFromPost(post) {
-    const extension = post.data.url.split(".").pop();
-    if (post.data.hasOwnProperty("preiew") && extension === "gif") {
+    const extension = post.data.url.split('.').pop();
+    if (post.data.hasOwnProperty('preiew') && extension === 'gif') {
       return post.data.preview.preview.images[0].source.url;
     }
 
-    if (extension === "gif" || extension === "jpg" || extension === "jpeg") {
+    if (extension === 'gif' || extension === 'jpg' || extension === 'jpeg') {
       return post.data.url;
     }
 
@@ -73,44 +73,44 @@ export default class RedditPosts extends Component {
 
   componentChose(display) {
     const flexContainerGallery = {
-      display: "flex",
-      width: "100%",
-      flexDirection: "row",
-      flexWrap: "wrap",
-      justifyContent: "flex-start",
-      listStyle: "none"
+      display: 'flex',
+      width: '100%',
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      justifyContent: 'flex-start',
+      listStyle: 'none'
     };
 
     const flexContainerList = {
-      width: "100%",
-      display: "flex",
-      flexDirection: "column",
-      flexFlow: "wrap",
-      justifyContent: "center"
+      width: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      flexFlow: 'wrap',
+      justifyContent: 'center'
     };
 
     const gridContainerTile = {
-      width: "100%",
-      display: "grid",
-      gridColumnGap: "0px",
-      gridTemplateColumns: "auto auto auto auto",
-      justifyContent: "center"
+      width: '100%',
+      display: 'grid',
+      gridColumnGap: '0px',
+      gridTemplateColumns: 'auto auto auto auto',
+      justifyContent: 'center'
     };
 
     switch (display) {
-      case "tile":
+      case 'tile':
         return {
           containerStyle: gridContainerTile,
           ListItemComponent: RedditTile
         };
 
-      case "gallery":
+      case 'gallery':
         return {
           containerStyle: flexContainerGallery,
           ListItemComponent: RedditPostIt
         };
 
-      case "listing":
+      case 'listing':
         return {
           containerStyle: flexContainerList,
           ListItemComponent: RedditListing

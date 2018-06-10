@@ -1,12 +1,12 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
-  template: path.join(__dirname, "example/src/index.html"),
-  filename: "./index.html"
+  template: path.join(__dirname, 'example/src/index.html'),
+  filename: './index.html'
 });
 
 module.exports = {
-  entry: path.join(__dirname, "example/src/index.js"),
+  entry: path.join(__dirname, 'example/src/index.js'),
   module: {
     rules: [
       {
@@ -14,23 +14,23 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: "babel-loader",
+            loader: 'babel-loader',
             options: {
-              presets: ["react"],
-              plugins: ["transform-class-properties"]
+              presets: ['react'],
+              plugins: ['transform-class-properties']
             }
           }
         ]
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
+        use: ['style-loader', 'css-loader']
       }
     ]
   },
   plugins: [htmlWebpackPlugin],
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: ['.js', '.jsx']
   },
   devServer: {
     port: 3001

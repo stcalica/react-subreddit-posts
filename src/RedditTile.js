@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 /*
   Full image as the tile, no margins, no padding, no titles
@@ -8,11 +8,11 @@ import React from "react";
 
 export default function RedditTile(props) {
   const tileItem = {
-    listStyle: "none"
+    listStyle: 'none'
   };
 
   const anchorStyle = {
-    textDecoration: "none"
+    textDecoration: 'none'
   };
 
   return (
