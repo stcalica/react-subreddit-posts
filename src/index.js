@@ -23,14 +23,12 @@ export default class SubredditPosts extends Component {
   }
 
   handlePosts = (posts) => {
-    const apiPosts = posts.data.children.map((post, index) => {
-      return {
-        key: index,
-        title: post.data.title,
-        media: this.getMediaFromPost(post),
-        link: post.data.url
-      };
-    });
+    const apiPosts = posts.data.children.map((post, index) => ({
+      key: index,
+      title: post.data.title,
+      media: this.getMediaFromPost(post),
+      link: post.data.url
+    }));
 
     this.setState({
       redditPosts: apiPosts,
