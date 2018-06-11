@@ -25,7 +25,7 @@ const gridContainerTile = {
   justifyContent: 'center'
 };
 
-const Container = ({ display, children}) => {
+const ListContainer = ({ display, children}) => {
   switch (display) {
     case 'tile':
       return <ul style={gridContainerTile}>{children}</ul>;
@@ -41,4 +41,4 @@ const Container = ({ display, children}) => {
   }
 }
 
-export default Container;
+export default ListContainer;

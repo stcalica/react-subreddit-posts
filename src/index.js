@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Container from './Container';
+import ListContainer from './ListContainer';
 import ListItemComponent from './ListItemComponent';
 
 const redditAPI = 'https://www.reddit.com/r/';
@@ -54,7 +54,7 @@ export default class SubredditPosts extends Component {
   render() {
 
     return (
-      <Container display={this.props.display}>
+      <ListContainer display={this.props.display}>
         {this.state.isLoading && <p>Loading...</p>}
         {!this.state.isLoading && this.state.redditPosts.map(post => (
           <ListItemComponent
@@ -67,7 +67,7 @@ export default class SubredditPosts extends Component {
             width={this.props.width}
           />
         ))}
-      </Container>
+      </ListContainer>
     );
   }
 }
