@@ -22,11 +22,9 @@ export default function RedditListing(props) {
     margin: '10px'
   };
 
-  const listTitle = {
+  const titleListItem = {
     margin: '10px'
   };
-
-  const titleListItem = {};
 
   return (
     <li style={listItem}>
@@ -38,9 +36,7 @@ export default function RedditListing(props) {
           height={props.height}
           width={props.width}
         />
-        <div style={listTitle}>
-          <h3 style={titleListItem}>{props.title}</h3>
-        </div>
+        <h3 style={titleListItem}>{props.title}</h3>
       </a>
     </li>
   );
