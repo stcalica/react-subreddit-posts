@@ -20,11 +20,10 @@ export default function RedditTile(props) {
       <a style={anchorStyle} href={props.link}>
         <img
           src={props.media}
-          alt="Reddit Post"
+          alt={props.title}
           height={props.height}
           width={props.width}
         />
-        <h3>{props.title}</h3>
       </a>
     </li>
   );

@@ -30,7 +30,7 @@ export default function RedditPostIt(props) {
         <img
           style={galleryPreview}
           src={props.media}
-          alt="Reddit Post"
+          alt={props.title}
           height={props.height}
           width={props.width}
         />

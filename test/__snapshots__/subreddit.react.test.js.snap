@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` 1`] = `
+<ul
+  style={
+    Object {
+      "display": "flex",
+      "flexDirection": "row",
+      "flexWrap": "wrap",
+      "justifyContent": "flex-start",
+      "listStyle": "none",
+      "width": "100%",
+    }
+  }
+/>
+`;
+
+exports[`Subreddit Component Works That Subreddit Posts Loads 1`] = `
+<ul
+  style={
+    Object {
+      "display": "flex",
+      "flexDirection": "row",
+      "flexWrap": "wrap",
+      "justifyContent": "flex-start",
+      "listStyle": "none",
+      "width": "100%",
+    }
+  }
+/>
+`;
+
+exports[`That Subreddit Posts Loads 1`] = `
+<ul
+  style={
+    Object {
+      "display": "flex",
+      "flexDirection": "row",
+      "flexWrap": "wrap",
+      "justifyContent": "flex-start",
+      "listStyle": "none",
+      "width": "100%",
+    }
+  }
+/>
+`;

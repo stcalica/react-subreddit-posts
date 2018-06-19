@@ -3,6 +3,9 @@ import React from 'react';
 /*
   Image next to title which is all a link
   one after the other
+  <ListItem {...props} >
+
+  </ListItem>
 */
 export default function RedditListing(props) {
   const listItem = {
@@ -34,7 +37,7 @@ export default function RedditListing(props) {
         <img
           style={listPreview}
           src={props.media}
-          alt="Reddit Post"
+          alt={props.title}
           height={props.height}
           width={props.width}
         />

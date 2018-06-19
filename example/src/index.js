@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
-import RedditPosts from '../../src/RedditPosts';
+import SubredditPosts from '../../src/index';
 
 const App = () => (
-  <RedditPosts
+  <SubredditPosts
     subreddit="aww"
     display="gallery" //list, gallery, tile
     placeholder="http://www.codeisdead.com/img/profile/Kyle.jpg" // image if no image or preview or media
