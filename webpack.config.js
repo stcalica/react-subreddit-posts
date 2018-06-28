@@ -1,12 +1,17 @@
+const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const htmlWebpackPlugin = new HtmlWebpackPlugin({
-  template: path.join(__dirname, 'example/src/index.html'),
-  filename: './index.html'
-});
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+// const htmlWebpackPlugin = new HtmlWebpackPlugin({
+//   template: path.join(__dirname, 'example/src/index.html'),
+//   filename: './index.html'
+// });
 
 module.exports = {
   entry: path.join(__dirname, 'example/src/index.js'),
+  output: {
+    libraryTarget: 'commonjs2',
+  },
   module: {
     rules: [
       {
@@ -28,7 +33,7 @@ module.exports = {
       }
     ]
   },
-  plugins: [htmlWebpackPlugin],
+  // plugins: [ htmlWebpackPlugin ],
   resolve: {
     extensions: ['.js', '.jsx']
   },
