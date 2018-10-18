@@ -14,7 +14,7 @@ export default class SubredditPosts extends Component {
   }
 
   componentDidMount() {
-    const uri = `${redditAPI}${this.props.subreddit}.json`;
+    const uri = `${redditAPI}${this.props.subreddit}.json`+'?raw_json=1';
     fetch(uri)
       .then(data => data.json())
       .then(this.handlePosts)
