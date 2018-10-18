@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
-import SubredditPosts from '../../src/index';
+import SubredditPosts from '../../build/index.js';
+//import SubredditPosts from '../../src/index';
 
 const App = () => (
   <SubredditPosts
